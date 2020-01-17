@@ -18,6 +18,14 @@ function App() {
     },
   };
 
+
+  async function AddDev(dev)  {
+    
+    const response = await api.post('/devs', dev);
+    setDevs([...devs, response.data]);
+
+  };
+
   useEffect(() => {
 
     async function loadDevs() {
@@ -45,7 +53,7 @@ function App() {
           ]}
         >
           <Box gridArea="register">
-            <Register />
+            <Register onSubmit={AddDev}/>
           </Box>
 
           <Box gridArea="devs" direction='row' wrap='true' gap='medium'>

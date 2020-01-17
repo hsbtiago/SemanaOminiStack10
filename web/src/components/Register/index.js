@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, FormField, Form, Button, Heading, TextInput } from 'grommet';
 import { Save } from 'grommet-icons';
-import api from '../../services/api';
 
-function Register(props) {
+function Register({onSubmit}) {
 
     const [github_username, setGithub_Username] = useState('');
     const [techs, setTechs] = useState('');
@@ -31,17 +30,16 @@ function Register(props) {
 
     }, []);
 
-    async function SubmitForm(e){
-        
+    async function SubmitForm(e){        
         e.preventDefault();
 
-        await api.post('/devs', {
+        await onSubmit({
             github_username,
             techs,
             latitude,
             longitude
         });
-
+       
         setGithub_Username('');
         setTechs('');
     }
@@ -52,7 +50,6 @@ function Register(props) {
             pad='medium'
             elevation='medium'
             width='medium'
-            {...props}
         >
 
             <Form onSubmit={SubmitForm}>
