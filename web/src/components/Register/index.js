@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, FormField, Form, Button, Heading, TextInput } from 'grommet';
 import { Save } from 'grommet-icons';
-import api from './services/api';
+import api from '../../services/api';
 
 function Register(props) {
 

@@ -37,5 +37,13 @@ module.exports = {
         }
 
         return response.json(dev);
+    },
+
+    async destroy(request, response) {
+        
+        let [github_username] = request.body;
+        Dev.deleteOne({github_username}) ;
+
+        return response.json(true);
     }
 }

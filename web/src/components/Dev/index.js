@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Heading, Paragraph, Image, Button, Text } from 'grommet';
 import { Github } from 'grommet-icons';
 
-const Dev = (props) => (
+const Dev = (dev) => (
     <Box pad='medium' elevation='medium'>
 
         <Box direction='row'>
@@ -10,16 +10,20 @@ const Dev = (props) => (
             <Box height='xsmall' width='xsmall'>
                 <Image
                     fit='contain'
-                    src='https://avatars3.githubusercontent.com/u/15053038?s=460&v=4'
+                    src={dev.avatar_url}
                 />
             </Box>
 
             <Box height='xsmall' margin={{left: '10px', top: 'none', bottom: 'none'}}>
                 <Heading level='4' margin='none' >
-                    Tiago Bernardo
+                    {dev.name}
                 </Heading>
                 <Text color='grey'>
-                    c#, aspnet, mvc, vue, node, react, javascript
+                    {
+                        dev.techs.map((tech) => (
+                            <span> {tech} </span>
+                        ))
+                    }
                 </Text>
             </Box>
         </Box>
@@ -27,13 +31,13 @@ const Dev = (props) => (
         <Box>
 
             <Paragraph>
-                olá, meu nome é tiago  esta e minha bio. texto complementar aqui top da baladeira para testar o react
+                {dev.bio}
             </Paragraph>
 
             <Button
                 icon={<Github />}
                 label="Github"
-                onClick={() => { }}
+                onClick={`https://github.com/${dev.github_username}`}
             />
 
         </Box>

@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://omnistack:9xHRKARcnizlPX0c@cluster0-04dgg.azure.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://omnistack:9xHRKARcnizlPX0c@cluster0-04dgg.azure.mongodb.net/SemanaOmniStack10?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
