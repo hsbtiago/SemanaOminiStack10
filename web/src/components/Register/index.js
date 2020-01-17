@@ -35,7 +35,7 @@ function Register(props) {
         
         e.preventDefault();
 
-        const response = await api.post('/devs', {
+        await api.post('/devs', {
             github_username,
             techs,
             latitude,

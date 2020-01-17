@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grommet, Main, Box } from 'grommet';
+import { Grommet, Main, Box, Grid } from 'grommet';
 import Register from './components/Register';
 import Dev from './components/Dev';
 import api from './services/api';
@@ -23,6 +23,7 @@ function App() {
     async function loadDevs() {
       const response = await api.get('/devs');
       setDevs(response.data);
+      console.log(devs);
     };
 
     loadDevs();
@@ -33,23 +34,29 @@ function App() {
     <Grommet theme={theme} full>
 
       <Main pad="large">
-        <Box direction='row' pad='medium'>
 
-          <Box pad='small'>
+        <Grid
+          rows={['large']}
+          columns={['medium', 'xlarge']}
+          gap="medium"
+          areas={[
+            { name: 'register', start: [0, 0], end: [1, 0] },
+            { name: 'devs', start: [1, 0], end: [1, 0] },
+          ]}
+        >
+          <Box gridArea="register">
             <Register />
           </Box>
 
-          <Box pad='small'>
+          <Box gridArea="devs" direction='row' wrap='true' gap='medium'>
             {
               devs.map((dev) => (
-                <>
-                  <h1>{dev.github_username}</h1>
-                  <Dev dev={dev} />
-                </>
+                <Dev dev={dev} />
               ))
             }
           </Box>
-        </Box>
+
+        </Grid>
 
       </Main>
 

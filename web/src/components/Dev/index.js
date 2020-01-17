@@ -2,27 +2,27 @@ import React from 'react';
 import { Box, Heading, Paragraph, Image, Button, Text } from 'grommet';
 import { Github } from 'grommet-icons';
 
-const Dev = (dev) => (
-    <Box pad='medium' elevation='medium'>
+const Dev = (props) => (
+    <Box pad='medium' elevation='medium' width='500px' height='300px' margin="{top: 100px}" >
 
         <Box direction='row'>
 
             <Box height='xsmall' width='xsmall'>
                 <Image
                     fit='contain'
-                    src={dev.avatar_url}
+                    src={props.dev.avatar_url}
                 />
             </Box>
 
             <Box height='xsmall' margin={{left: '10px', top: 'none', bottom: 'none'}}>
                 <Heading level='4' margin='none' >
-                    {dev.name}
+                    {props.dev.name}
                 </Heading>
                 <Text color='grey'>
                     {
-                        dev.techs.map((tech) => (
-                            <span> {tech} </span>
-                        ))
+                       props.dev.techs.map(tech => (
+                           <span> {tech} </span>
+                       ))
                     }
                 </Text>
             </Box>
@@ -31,13 +31,13 @@ const Dev = (dev) => (
         <Box>
 
             <Paragraph>
-                {dev.bio}
+                {props.dev.bio}
             </Paragraph>
 
             <Button
                 icon={<Github />}
                 label="Github"
-                onClick={`https://github.com/${dev.github_username}`}
+                onClick={`https://github.com/${props.dev.github_username}`}
             />
 
         </Box>

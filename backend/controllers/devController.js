@@ -41,9 +41,10 @@ module.exports = {
 
     async destroy(request, response) {
         
-        let [github_username] = request.body;
-        Dev.deleteOne({github_username}) ;
+        const github_username = request.params.id;
+        
+        const res = await Dev.findOneAndDelete({github_username}) ;
 
-        return response.json(true);
+        return response.json(res.deletedCount);
     }
 }
