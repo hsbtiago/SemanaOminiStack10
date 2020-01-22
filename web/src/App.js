@@ -19,12 +19,18 @@ function App() {
   };
 
 
-  async function AddDev(dev)  {
-    
+  async function AddDev(dev) {
+
     const response = await api.post('/devs', dev);
     setDevs([...devs, response.data]);
 
   };
+
+  async function RemoveDev(dev) {
+
+    await api.delete(`/devs/${dev.github_username}`);
+    setDevs([...devs.filter(d => d.github_username !== dev.github_username)]);
+  }
 
   useEffect(() => {
 
@@ -53,13 +59,13 @@ function App() {
           ]}
         >
           <Box gridArea="register">
-            <Register onSubmit={AddDev}/>
+            <Register onSubmit={AddDev} />
           </Box>
 
           <Box gridArea="devs" direction='row' wrap='true' gap='medium'>
             {
               devs.map((dev) => (
-                <Dev key={dev.github_username} dev={dev} />
+                <Dev key={dev.github_username} dev={dev} onRemove={RemoveDev} />
               ))
             }
           </Box>
