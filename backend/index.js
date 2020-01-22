@@ -10,8 +10,6 @@ mongoose.connect('mongodb+srv://omnistack:9xHRKARcnizlPX0c@cluster0-04dgg.azure.
     useUnifiedTopology: true
 });
 
-
-
 app.use(cors());
 
 app.use(express.json());

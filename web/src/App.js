@@ -59,7 +59,7 @@ function App() {
           <Box gridArea="devs" direction='row' wrap='true' gap='medium'>
             {
               devs.map((dev) => (
-                <Dev dev={dev} />
+                <Dev key={dev.github_username} dev={dev} />
               ))
             }
           </Box>
